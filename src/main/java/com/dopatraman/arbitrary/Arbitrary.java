@@ -36,7 +36,7 @@ public class Arbitrary {
     private static <T> Object constructArbitrary(Class<T> field) throws Exception {
         switch(field.getName()) {
             case "java.lang.String":
-                return ArbitraryString.make();
+                return ArbitraryString.make(10);
             case "java.lang.Integer":
                 return ArbitraryInteger.make();
             default:
