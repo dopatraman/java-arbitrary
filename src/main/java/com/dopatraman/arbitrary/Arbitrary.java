@@ -16,6 +16,10 @@ public class Arbitrary {
                 : (T) constructArbitraryForEachField(t);
     }
 
+    // This construction assumes two things:
+    // 1. That each field has a setter that is suffixed with its name
+    // 2. That fields are set by the setter (as in not set by a constructor)
+    // This will likely break for values injected into a constructor.
     private static <T> Object constructArbitraryForEachField(Class<T> t) throws Exception {
         T instance = t.getConstructor().newInstance();
         Field[] fields = t.getDeclaredFields();
