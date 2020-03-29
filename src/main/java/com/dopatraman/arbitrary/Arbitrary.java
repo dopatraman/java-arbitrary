@@ -11,9 +11,12 @@ public class Arbitrary {
         // get all declared fields from generic
         // for each field, call setter on instance with new value
         // return
-        if (isPrimitive(t)) {
-            return (T) constructArbitrary(t);
-        }
+        return isPrimitive(t)
+                ? (T) constructArbitrary(t)
+                : (T) constructArbitraryForEachField(t);
+    }
+
+    private static <T> Object constructArbitraryForEachField(Class<T> t) throws Exception {
         T instance = t.getConstructor().newInstance();
         Field[] fields = t.getDeclaredFields();
         for (Field f : fields) {
