@@ -32,8 +32,23 @@ public class Arbitrary {
 
     private static <T> boolean isPrimitive(Class<T> c) throws Exception {
         switch(c.getName()) {
-            case "java.lang.String":
+            case "java.lang.Byte":
+            case "byte":
+            case "java.lang.Short":
+            case "short":
             case "java.lang.Integer":
+            case "int":
+            case "java.lang.Long":
+            case "long":
+            case "java.lang.Float":
+            case "float":
+            case "java.lang.Double":
+            case "double":
+            case "java.lang.Character":
+            case "char":
+            case "java.lang.String":
+            case "java.lang.Boolean":
+            case "boolean":
                 return true;
             default:
                 return false;
